@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Trends 2025 | Latest CS & IT Technologies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00d4ff, #00ff88);
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-circle:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 10%; animation-delay: 0s; }
+        .bg-circle:nth-child(2) { width: 200px; height: 200px; top: 60%; right: 10%; animation-delay: 2s; }
+        .bg-circle:nth-child(3) { width: 150px; height: 150px; bottom: 20%; left: 60%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Header */
+        header {
+            padding: 100px 0 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #00d4ff, #00ff88, #ff6b9d);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3)); }
+            to { filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5)); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .year-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b9d, #c44dff);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Tech Categories Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .tech-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .tech-card:hover::before {
+            left: 100%;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #00d4ff, #00ff88);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .tech-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        .tech-description {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .tech-list {
+            list-style: none;
+        }
+
+        .tech-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 20px;
+            color: #e0e0e0;
+        }
+
+        .tech-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+        }
+
+        /* Trending Section */
+        .trending {
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #ff6b9d, #c44dff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .trending-item {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(196, 77, 255, 0.1));
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 107, 157, 0.2);
+        }
+
+        .trending-item:hover {
+            transform: scale(1.05);
+        }
+
+        .trending-rank {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ff6b9d;
+            margin-bottom: 10px;
+        }
+
+        .trending-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trending-desc {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #a0a0a0;
+            font-size: 1.1rem;
+        }
+
+        /* Interactive Elements */
+        .interactive-demo {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .demo-button {
+            background: linear-gradient(45deg, #00d4ff, #00ff88);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            color: #000;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .demo-output {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            color: #00ff88;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00d4ff, #00ff88);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="year-badge">2025 Edition</div>
+            <h1 class="hero-title">Tech Frontier</h1>
+            <p class="hero-subtitle">Discover the cutting-edge technologies shaping the future of Computer Science and IT</p>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-number" data-target="150">0</div>
+                <div class="stat-label">Emerging Technologies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="85">0</div>
+                <div class="stat-label">AI Breakthroughs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="200">0</div>
+                <div class="stat-label">New Frameworks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="95">0</div>
+                <div class="stat-label">Cloud Innovations</div>
+            </div>
+        </section>
+
+        <section class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-icon">🤖</div>
+                <h3 class="tech-title">Artificial Intelligence</h3>
+                <p class="tech-description">Revolutionary AI technologies transforming every industry with unprecedented capabilities.</p>
+                <ul class="tech-list">
+                    <li>GPT-5 & Advanced LLMs</li>
+                    <li>Multimodal AI Systems</li>
+                    <li>AI Agents & Autonomous Systems</li>
+                    <li>Neural Architecture Search</li>
+                    <li>Federated Learning</li>
+                </ul>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">🌐</div>
+                <h3 class="tech-title">Web3 & Blockchain</h3>
+                <p class="tech-description">Next-generation decentralized technologies reshaping digital interactions and ownership.</p>
+                <ul class="tech-list">
+                    <li>Ethereum 2.0 & Layer 2 Solutions</li>
+                    <li>DeFi 3.0 Protocols</li>
+                    <li>NFT Utility Platforms</li>
+                    <li>Cross-chain Interoperability</li>
+                    <li>Zero-Knowledge Proofs</li>
+                </ul>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">⚡</div>
+                <h3 class="tech-title">Quantum Computing</h3>
+                <p class="tech-description">Breakthrough quantum technologies solving previously impossible computational problems.</p>
+                <ul class="tech-list">
+                    <li>IBM Quantum Network</li>
+                    <li>Google Quantum AI</li>
+                    <li>Quantum Machine Learning</li>
+                    <li>Quantum Cryptography</li>
+                    <li>Quantum Simulation</li>
+                </ul>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">☁️</div>
+                <h3 class="tech-title">Cloud Native</h3>
+                <p class="tech-description">Modern cloud architectures enabling scalable, resilient, and efficient applications.</p>
+                <ul class="tech-list">
+                    <li>Kubernetes 1.30+</li>
+                    <li>Serverless Computing</li>
+                    <li>Edge Computing</li>
+                    <li>Multi-cloud Strategies</li>
+                    <li>Container Security</li>
+                </ul>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">🔗</div>
+                <h3 class="tech-title">DevOps & Platform Engineering</h3>
+                <p class="tech-description">Advanced development practices and platform solutions for modern software delivery.</p>
+                <ul class="tech-list">
+                    <li>GitOps & ArgoCD</li>
+                    <li>Platform Engineering</li>
+                    <li>Infrastructure as Code</li>
+                    <li>Observability Stack</li>
+                    <li>Chaos Engineering</li>
+                </ul>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">🛡️</div>
+                <h3 class="tech-title">Cybersecurity</h3>
+                <p class="tech-description">Next-gen security technologies protecting against evolving digital threats.</p>
+                <ul class="tech-list">
+                    <li>Zero Trust Architecture</li>
+                    <li>AI-Powered Threat Detection</li>
+                    <li>Quantum-Safe Cryptography</li>
+                    <li>Extended Detection & Response</li>
+                    <li>Privacy-Preserving Technologies</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="trending">
+            <h2 class="section-title">🔥 Most Trending</h2>
+            <div class="trending-grid">
+                <div class="trending-item">
+                    <div class="trending-rank">#1</div>
+                    <div class="trending-name">Large Language Models</div>
+                    <div class="trending-desc">ChatGPT, Claude, Gemini leading the AI revolution</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-rank">#2</div>
+                    <div class="trending-name">Vector Databases</div>
+                    <div class="trending-desc">Pinecone, Weaviate, Chroma for AI applications</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-rank">#3</div>
+                    <div class="trending-name">Edge AI</div>
+                    <div class="trending-desc">Running AI models directly on edge devices</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-rank">#4</div>
+                    <div class="trending-name">WebAssembly</div>
+                    <div class="trending-desc">High-performance web applications</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-rank">#5</div>
+                    <div class="trending-name">Rust Language</div>
+                    <div class="trending-desc">Memory-safe systems programming</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-rank">#6</div>
+                    <div class="trending-name">5G & 6G Networks</div>
+                    <div class="trending-desc">Ultra-fast wireless connectivity</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2 class="section-title">Interactive Demo</h2>
+            <button class="demo-button" onclick="simulateAI()">🤖 Simulate AI Processing</button>
+            <button class="demo-button" onclick="simulateQuantum()">⚡ Quantum Simulation</button>
+            <button class="demo-button" onclick="simulateBlockchain()">🌐 Blockchain Demo</button>
+            <div class="demo-output" id="demoOutput">Click a button above to see the magic happen!</div>
+        </section>
+
+        <footer>
+            <p class="footer-text">
+                🚀 Stay ahead of the curve • Built with cutting-edge web technologies • 2025
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Animated counter for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 20);
+        }
+
+        // Initialize counters when page loads
+        window.addEventListener('load', () => {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                animateCounter(stat, target);
+            });
+        });
+
+        // Interactive demo functions
+        function simulateAI() {
+            const output = document.getElementById('demoOutput');
+            output.innerHTML = 'Processing with Neural Networks...<br>🧠 Analyzing patterns... 95% accuracy achieved!';
+            
+            setTimeout(() => {
+                output.innerHTML = '✅ AI Model trained successfully!<br>📊 Predictions: 99.7% confidence level';
+            }, 2000);
+        }
+
+        function simulateQuantum() {
+            const output = document.getElementById('demoOutput');
+            output.innerHTML = 'Initializing Quantum Bits...<br>⚛️ Superposition state achieved!';
+            
+            setTimeout(() => {
+                output.innerHTML = '🌌 Quantum entanglement established<br>🔮 Computation completed in parallel universes!';
+            }, 2500);
+        }
+
+        function simulateBlockchain() {
+            const output = document.getElementById('demoOutput');
+            output.innerHTML = 'Mining new block...<br>⛏️ Hash: 0x00001a2b3c4d...';
+            
+            setTimeout(() => {
+                output.innerHTML = '🔗 Block validated and added to chain<br>💎 Smart contract executed successfully!';
+            }, 1800);
+        }
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add parallax effect to background circles
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            document.querySelectorAll('.bg-circle').forEach((circle, index) => {
+                circle.style.transform = `translateY(${rate * (index + 1) * 0.3}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+
+        // Add typing effect to hero subtitle
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect after a delay
+        setTimeout(() => {
+            const subtitle = document.querySelector('.hero-subtitle');
+            const originalText = subtitle.textContent;
+            typeWriter(subtitle, originalText, 30);
+        }, 1000);
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.tech-card, .trending-item');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
